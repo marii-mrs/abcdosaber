@@ -25,9 +25,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("tipoatividade/", include("tipodeatividade.urls")),
+    path("tipoatividade/", include("tipodeatividade.urls", namespace='tipodeatividade')),
     path("Instrutor/", include("instrutor.urls")),
-    path("aluno/", include("aluno.urls, namespace='aluno'")),
+    path("aluno/", include("aluno.urls", namespace='aluno')),
     path("turma/", include("turma.urls")),
     path('titulo/', include('titulo.urls')),
     path('', TemplateView.as_view(template_name="escola2.html")),

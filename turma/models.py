@@ -23,10 +23,10 @@ class Turma(models.Model):
         default=30, help_text="Informe a duração da aula da Turma"
         )
     data_inicial = models.DateField(
-        default=timezone.now(), help_text="Informe a data inicial da Turma"
+        default=timezone.now, help_text="Informe a data inicial da Turma"
     )
     data_final = models.DateField(
-        default=timezone.now(), help_text="Informe a data final da Turma"
+        default=timezone.now, help_text="Informe a data final da Turma"
     )
     codigo_atividade = models.ForeignKey(TipoDeAtividade, on_delete=models.CASCADE)
     matricula_monitor = models.ForeignKey(
