@@ -10,7 +10,7 @@
     <div class="navbar-nav">
         <a href="/" class="nav-link">Início</a>
         <a href="#" class="nav-link">Cadastrar</a>
-        <a href="{% url 'tipodeatividade:listar' %}" class="nav-link">Listar</a>
+        <a href="{% url 'instrutor:listar' %}" class="nav-link">Listar</a>
     </div>
 </div>
 
@@ -21,12 +21,11 @@
 
     <div class="row">
         <div class="col text-center m-0">
-            <h2 class="mt-2 mb-5 my-h2">Lista de Tipos de Atividade</h2>
+            <h2 class="mt-2 mb-5 my-h2">Lista de Instrutores</h2>
         </div>
     </div>
 
-    {% if tipodeatividade %}
-
+    {% if instrutores %}
         <!-- tabela responsiva -->
         <div class="table-responsive">
 
@@ -47,32 +46,39 @@
                     
                     <tr>
                         <!-- colunas cabecalho -->
-                        <th>Codigo</th>
-                        <th>Descrição</th>
+                        <th>Id</th>
+                        <th>RG</th>
+                        <th>Data Nascimento</th>
+                        <th>Telefone</th>
+                        <th>Título</th>
                     </tr>
                 </thead>
 
                 <!-- linhas -->
-                {% for ta in tipodeatividade %}
+                {% for instrutor in instrutores %}
                 <tr>
-                    <td> {{ ta.codigo }}</td>
-                    <td> {{ ta.descricao }} </td>
+                    <td> {{ instrutor.id }}</td>
+                    <td> {{ instrutor.rg }} </td>
+                    <td> {{ instrutor.nome }} </td>
+                    <td> {{ instrutor.dataNascimento|date:"d/m/y" }} </td>
+                    <td> {% if instrutor.DDD  %} {{ instrutor.DDD }} - {{ instrutor.telefone }} {% else %} {{ instrutor.telefone }} {% endif %}</td>
+                    <td> {% if instrutor.titulo  %}  {{ instutor.titulo.descricao }} {% else %} --- {% endif %} </td>
+
                 </tr>
 
                 {% endfor %}
-
+            
             </table>
-
         </div>
 
     {% else %}   
-        
         <div class="text-danger">
-            <p>Não há Tipos de Atividade</p>
+            <p>Não há instrutores cadastrados.</p>
         </div>
 
     {% endif %} 
-   
+    
 </main>
+
 
 {% endblock %}

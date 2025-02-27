@@ -1,7 +1,19 @@
 {% extends "base_template.html" %}
 
 {% block title %}
-    <litle> Django - exercercios </title>
+    <title> Django - exercercios </title>
+{% endblock %}
+
+{% block menu %}
+
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+    <div class="navbar-nav">
+        <a href="/" class="nav-link">Início</a>
+        <a href="#" class="nav-link">Cadastrar</a>
+        <a href="{% url 'aluno:listar' %}" class="nav-link">Listar</a>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block corpo %}

@@ -14,3 +14,4 @@ class Aluno(models.Model):
         
     def __str__(self):
         return f'{self.matricula} - {self.nome}'
+    

@@ -5,78 +5,74 @@
 {% endblock %}
 
 {% block menu %}
-<div
-  class="collapse navbar-collapse justify-content-end"id="mynavbar">
-  <div class="navbar-nav">
-    <a href="./escola.html" class="nav-link">Início</a>
-    <a href="{% url 'tipodeatividade:listar' %}" class="nav-link">Tipos de Atividade</a>
-    <a href="{% url 'titulo:cadastro' %}" class="nav-link">Títulos</a>
-    <a href="{% url 'aluno:listar' %}" class="nav-link">Alunos</a>
-    <a href="./instrutor/cadastroInstrutor.html" class="nav-link">Instrutor</a>
-    <a href="./turma/cadastroTurma.html" class="nav-link">Turmas</a>
-    <a href="./contato/contato.html" class="nav-link">Contato</a>
-  </div>
+
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+    <div class="navbar-nav">
+        <a href="/" class="nav-link">Início</a>
+        <a href="{% url 'titulo:cadastro' %}" class="nav-link">Cadastrar</a>
+        <a href="{% url 'titulo:listar' %}" class="nav-link">Listar</a>
+    </div>
 </div>
+
 {% endblock %}
 
-{% block corpo %}
+{% block corpo %} 
 <main class="container m-2 mx-auto my-font-family">
 
     <div class="row">
         <div class="col text-center m-0">
-            <h2 class="mt-2 mb-5 my-h2">Titulo</h2>
+            <h2 class="mt-2 mb-5 my-h2">Lista de Titulo</h2>
         </div>
+    </div>
 
-        {% if tipodeatividade %}
+    <!-- tabela responsiva -->
+     {% if titulos %}
+    <div class="table-responsive">
 
-            <!-- tabela responsiva -->
-            <div class="table-responsive">
+        <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+        <table class="table
+                    table-borderless
+                    text-center
+                    my-table-hover
+                    my-table-image
+                    my-table-td-first-child
+                    my-table-border-bottom
+                    my-table-th
+                    w-100">
 
-                <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
-                <table class="table
-                            table-borderless
-                            text-center
-                            my-table-hover
-                            my-table-image
-                            my-table-td-first-child
-                            my-table-border-bottom
-                            my-table-th
-                            w-100">
+            <!-- cabecalho -->
+            <thead>
+                <!-- linhas -->
+                <tr>
+                    <!-- colunas cabecalho -->
+                    <th>Código</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
 
-                    <!-- cabecalho -->
-                    <thead>
-                        <!-- linhas -->
-                        
-                        <tr>
-                            <!-- colunas cabecalho -->
-                            <th>Codigo</th>
-                            <th>Descrição</th>
-                        </tr>
-                    </thead>
+            <!-- linhas -->
+             {% for t in titulos %}
+            <tr>
+                <td> {{ t.codigo}} </td>
+                <td> {{ t.descricao }} </td>
+                
+            </tr>
 
-                    <!-- linhas -->
-                    {% for ta in Titulo %}
-                    <tr>
-                        <td> {{ ta.codigo }}</td>
-                        <td> {{ ta.descricao }} </td>
-                    </tr>
-
-                    {% endfor %}
-
-                </table>
-
-            </div>
-
-        {% else %}   
-           
-            <div class="text-danger">
-                <p>Não há Tipos de Titulo</p>
-            </div>
-
-        {% endif %} 
+            {% endfor %}
+            
+        </table>
 
     </div>
-   
+
+    {% else %}
+
+    <div class = "text-danger">
+        <p> Não há Titulo Cadastrado.</p>
+    </div>
+
+    {% endif %}
+
 </main>
 
 {% endblock %}
+

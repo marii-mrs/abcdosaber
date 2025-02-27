@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from instrutor.models import Instrutor
+
 # Create your views here.
 def listar(request):
-    return HttpResponse("Lista de Tipos de Atividade")
+    lista_instrutor = Instrutor.objects.all()
+    contexto = {
+        'instrutores': lista_instrutor,
+    }
+    
+    return render(request, 'instrutor/listaInstrutor.html', context=contexto)
